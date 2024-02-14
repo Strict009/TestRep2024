@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:TestGame/Assets/StarterAssets/FirstPersonController/Scenes/Playground.unity.meta
 guid: 707acc8dffb72b144bb1ffbe1c965f3d
+========
+guid: ed2882e58cafb2d4c90715b2b200160f
+folderAsset: yes
+>>>>>>>> Stashed changes:TestGame/Assets/RPG_FPS_game_assets_industrial.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

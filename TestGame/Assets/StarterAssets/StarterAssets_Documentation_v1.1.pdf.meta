@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:TestGame/Assets/StarterAssets/StarterAssets_Documentation_v1.1.pdf.meta
 guid: 1030fbd7379311b47bf5b1178c1c7a26
 DefaultImporter:
+========
+guid: beef3bcde1610f04aa96275436147bb9
+PrefabImporter:
+>>>>>>>> Stashed changes:TestGame/Assets/Abandoned_Asylum/Prefabs/Asylum.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

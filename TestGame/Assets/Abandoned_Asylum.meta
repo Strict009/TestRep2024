@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:TestGame/Assets/Abandoned_Asylum.meta
 guid: 2286994f6ef9787449f13fbdaf8cb1a8
+========
+guid: 10e4f7f77d998bf49b068173092f2eb3
+>>>>>>>> Stashed changes:TestGame/Assets/Abandoned_Asylum/Models/Materials.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

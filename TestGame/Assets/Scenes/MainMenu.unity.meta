@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:TestGame/Assets/Scenes/MainMenu.unity.meta
 guid: 2bec40402a67f7a4584364ece30c6a2b
+========
+guid: 2286994f6ef9787449f13fbdaf8cb1a8
+folderAsset: yes
+>>>>>>>> Stashed changes:TestGame/Assets/Abandoned_Asylum.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
