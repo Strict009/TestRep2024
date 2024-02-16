@@ -3,19 +3,25 @@ using TMPro;
 
 public class InteractItem : MonoBehaviour
 {
-    public float interactionDistance = 2f; 
-    public TMP_Text interactionText; 
-    public string interactionPrompt = "Press E to interact"; 
+    public float interactionDistance = 2f;
+    public TMP_Text interactionText;
+    public string interactionPrompt = "Press E to interact";
+    public AudioSource interactSound; 
 
-    private bool isPlayerInRange = false; 
-    private bool isInteractionTextActive = false; 
+    private bool isPlayerInRange = false;
+    private bool isInteractionTextActive = false;
 
     void Update()
     {
-        
         if (isPlayerInRange && isInteractionTextActive && Input.GetKeyDown(KeyCode.E))
         {
-            
+            GameManager.Instance.AddPickedUpItem(gameObject);
+
+            if (interactSound != null)
+            {
+                interactSound.Play(); 
+            }
+
             gameObject.SetActive(false);
             isInteractionTextActive = false;
             interactionText.gameObject.SetActive(false);
