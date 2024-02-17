@@ -1047,7 +1047,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1866649529881134506}
-  - component: {fileID: 5736747416179393290}
   - component: {fileID: 6914598888667160008}
   - component: {fileID: 7707309376180731212}
   - component: {fileID: 2972408060164533203}
@@ -1055,6 +1054,7 @@ GameObject:
   - component: {fileID: 2165857289521080531}
   - component: {fileID: 6922606542803443345}
   - component: {fileID: 4382640251602362171}
+  - component: {fileID: -197638376176225809}
   m_Layer: 6
   m_Name: Zombie1 (2)
   m_TagString: Enemy
@@ -1092,27 +1092,6 @@ Transform:
   - {fileID: 7606344114033074260}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -186.375, z: 0}
---- !u!95 &5736747416179393290
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3096565448203434902}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2ef8e6599b7f9934e8ff0d64c5325a1f, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!23 &6914598888667160008
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1348,6 +1327,27 @@ CapsuleCollider:
   m_Height: 2.1045012
   m_Direction: 1
   m_Center: {x: 0, y: 0.89, z: 0}
+--- !u!95 &-197638376176225809
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096565448203434902}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
+  m_Controller: {fileID: 9100000, guid: 9ffb090c6c9406a45a9beca30bcc76d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3339700067148379134
 GameObject:
   m_ObjectHideFlags: 0

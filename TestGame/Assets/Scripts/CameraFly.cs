@@ -2,48 +2,79 @@ using UnityEngine;
 
 public class CameraFly : MonoBehaviour
 {
-    public Transform centerPoint; // The center point around which the camera revolves
-    public float rotationSpeed = 1f; // Speed of rotation around the center point
-    public float verticalSpeed = 1f; // Speed of vertical movement
-    public float maxHeight = 5f; // Maximum height above the center point
-    public float minHeight = 1f; // Minimum height above the center point
-    public float rotationOffset = 1f; // Additional rotation offset
+    public Transform centerPoint; 
+    public float rotationSpeed = 1f; 
+    public float verticalSpeed = 1f; 
+    public float maxHeight = 5f; 
+    public float minHeight = 1f; 
+    public float rotationOffset = 1f; 
+    public GameObject prefab1; 
+    public GameObject prefab2; 
+    public float switchIntervalMin = 5f; 
+    public float switchIntervalMax = 10f; 
 
-    private Vector3 initialPosition; // Initial position relative to the center point
+    private Vector3 initialPosition; 
+    private GameObject currentPrefab; 
+    private float nextSwitchTime; 
 
     void Start()
     {
-        // Store the initial position relative to the center point
+        
         initialPosition = transform.position - centerPoint.position;
+
+       
+        currentPrefab = prefab1;
+        currentPrefab.SetActive(true);
+
+        
+        nextSwitchTime = Time.time + Random.Range(switchIntervalMin, switchIntervalMax);
     }
 
     void Update()
     {
-        // Calculate the horizontal rotation around the center point
+       
+        if (Time.time >= nextSwitchTime)
+        {
+            
+            SwitchPrefab();
+
+            
+            nextSwitchTime = Time.time + Random.Range(switchIntervalMin, switchIntervalMax);
+        }
+
         float horizontalRotation = Time.time * rotationSpeed;
         Quaternion horizontalQuaternion = Quaternion.Euler(0f, horizontalRotation, 0f);
 
-        // Calculate the vertical movement
         float verticalOffset = Mathf.Sin(Time.time * verticalSpeed);
         Vector3 verticalMovement = Vector3.up * verticalOffset;
 
-        // Calculate the rotation around the camera's own axis
         Quaternion rotationOffsetQuaternion = Quaternion.Euler(0f, rotationOffset * Time.time, 0f);
 
-        // Apply the rotation and vertical movement to the camera's position
         Vector3 newPosition = centerPoint.position + initialPosition;
         newPosition = centerPoint.position + horizontalQuaternion * newPosition + verticalMovement;
 
-        // Clamp the vertical position to stay within the specified range
         newPosition.y = Mathf.Clamp(newPosition.y, centerPoint.position.y + minHeight, centerPoint.position.y + maxHeight);
 
-        // Update the camera's position
         transform.position = newPosition;
 
-        // Make the camera look at the center point
         transform.LookAt(centerPoint);
 
-        // Apply additional rotation offset
         transform.rotation *= rotationOffsetQuaternion;
+    }
+
+    void SwitchPrefab()
+    {
+        currentPrefab.SetActive(false);
+
+        if (currentPrefab == prefab1)
+        {
+            currentPrefab = prefab2;
+        }
+        else
+        {
+            currentPrefab = prefab1;
+        }
+
+        currentPrefab.SetActive(true);
     }
 }

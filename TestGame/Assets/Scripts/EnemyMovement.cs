@@ -52,7 +52,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-        if (flashlight != null && flashlight.spotlight.enabled) // Check if flashlight is on
+        if (flashlight != null && flashlight.spotlight.enabled) 
         {
             if (flashlight.IsAimingAtEnemy(transform.position))
             {
