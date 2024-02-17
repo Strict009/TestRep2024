@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            itemCountText.text = "KEYS: " + keyItemCount.ToString();
+            itemCountText.text = "MEDS: " + keyItemCount.ToString();
         }
     }
 
