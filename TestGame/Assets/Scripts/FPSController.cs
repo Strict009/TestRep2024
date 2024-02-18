@@ -20,20 +20,16 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
-        // Check if the game is paused
         if (Time.timeScale == 0)
         {
-            // Unlock cursor
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
         else
         {
-            // Lock cursor
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            // Movement
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 
@@ -43,7 +39,6 @@ public class FPSController : MonoBehaviour
 
             controller.Move(moveDirection * Time.deltaTime);
 
-            // Rotation
             float mouseX = Input.GetAxis("Mouse X");
             float mouseY = Input.GetAxis("Mouse Y");
 

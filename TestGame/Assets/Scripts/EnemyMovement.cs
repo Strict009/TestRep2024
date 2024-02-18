@@ -3,22 +3,29 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform[] patrolPoints; 
-    private int currentPatrolIndex = 0; 
-    public bool freeRoamEnabled = false; 
-    public bool pursuePlayerEnabled = false; 
+    public Transform[] patrolPoints;
+    private int currentPatrolIndex = 0;
+    public bool freeRoamEnabled = false;
+    public bool pursuePlayerEnabled = false;
     private NavMeshAgent navMeshAgent;
-    private GameObject player; 
-    private Flashlight flashlight; 
-    private bool isFrozen = false; 
+    private GameObject player;
+    private Flashlight flashlight;
+    private bool isFrozen = false;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
-        flashlight = FindObjectOfType<Flashlight>(); 
+        flashlight = FindObjectOfType<Flashlight>();
 
-        SetDestinationToNextPatrolPoint();
+        if (freeRoamEnabled)
+        {
+            SetRandomDestination();
+        }
+        else
+        {
+            SetDestinationToNextPatrolPoint();
+        }
     }
 
     void Update()
@@ -33,8 +40,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.1f)
                 {
-                    Vector3 randomDestination = RandomNavMeshPoint(10f);
-                    navMeshAgent.SetDestination(randomDestination);
+                    SetRandomDestination();
                 }
             }
             else
@@ -46,23 +52,43 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-        if (flashlight != null && flashlight.IsAimingAtEnemy(transform.position))
+        if (flashlight != null && flashlight.spotlight.enabled) 
         {
-            isFrozen = true;
-            navMeshAgent.isStopped = true; 
+            if (flashlight.IsAimingAtEnemy(transform.position))
+            {
+                isFrozen = true;
+                navMeshAgent.isStopped = true;
+            }
+            else
+            {
+                isFrozen = false;
+                navMeshAgent.isStopped = false;
+            }
         }
         else
         {
             isFrozen = false;
-            navMeshAgent.isStopped = false; 
+            navMeshAgent.isStopped = false;
         }
     }
 
     void SetDestinationToNextPatrolPoint()
     {
-        navMeshAgent.SetDestination(patrolPoints[currentPatrolIndex].position);
+        if (patrolPoints.Length > 0)
+        {
+            navMeshAgent.SetDestination(patrolPoints[currentPatrolIndex].position);
+            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+        }
+        else
+        {
+            Debug.LogWarning("No patrol points assigned.");
+        }
+    }
 
-        currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+    void SetRandomDestination()
+    {
+        Vector3 randomDestination = RandomNavMeshPoint(10f);
+        navMeshAgent.SetDestination(randomDestination);
     }
 
     Vector3 RandomNavMeshPoint(float radius)

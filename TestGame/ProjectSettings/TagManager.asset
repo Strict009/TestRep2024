@@ -8,6 +8,8 @@ TagManager:
   - Zombie
   - Flashlight
   - Enemy
+  - Key
+  - Battery
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
+  - Post
   - 
   - 
   - 
